@@ -28,8 +28,8 @@ struct FWTPopoverViewFrameAndArrowAdjustment
 
 @interface FWTPopoverView ()
 
-@property (nonatomic, retain)  UIImageView *backgroundImageView;
-@property (nonatomic, readwrite, retain) UIView *contentView;
+@property (nonatomic, strong)  UIImageView *backgroundImageView;
+@property (nonatomic, readwrite, strong) UIView *contentView;
 @property (nonatomic, assign) UIEdgeInsets suggestedEdgeInsets, edgeInsets;
 
 @end
@@ -41,15 +41,6 @@ struct FWTPopoverViewFrameAndArrowAdjustment
 @synthesize backgroundHelper = _backgroundHelper;
 @synthesize animationHelper = _animationHelper;
 
-- (void)dealloc
-{
-    self.arrow = nil;
-    self.backgroundHelper = nil;
-    self.animationHelper = nil;
-    self.contentView = nil;
-    self.backgroundImageView = nil;
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {

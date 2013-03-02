@@ -15,23 +15,17 @@
 #define FWT_PAH_PRESENT_DELAY               .0f
 #define FWT_PAH_DISMISS_DELAY               .0f
 #define FWT_PAH_PRESENT_OPTIONS             UIViewAnimationOptionCurveEaseIn
-#define FWT_PAH_DISMISS_OPTIONS             UIViewAnimationOptionCurveEaseIn
+#define FWT_PAH_DISMISS_OPTIONS             UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionAllowAnimatedContent
 
 @interface FWTPopoverAnimationHelper ()
-@property (nonatomic, readwrite, assign) FWTPopoverView *annotationView;
+@property (nonatomic, readwrite, weak) FWTPopoverView *annotationView;
 @end
 
 @implementation FWTPopoverAnimationHelper
 
 - (void)dealloc
 {
-    self.prepareBlock = nil;
-    self.presentAnimationsBlock = nil;
-    self.dismissAnimationsBlock = nil;
-    self.presentCompletionBlock = nil;
-    self.dismissCompletionBlock = nil;
     self.annotationView = nil;
-    [super dealloc];
 }
 
 - (id)initWithAnnotationView:(FWTPopoverView *)annotationView
@@ -47,7 +41,7 @@
         self.presentOptions = FWT_PAH_PRESENT_OPTIONS;
         self.dismissOptions = FWT_PAH_DISMISS_OPTIONS;
         
-        __block typeof(self.annotationView) theAnnotationView = self.annotationView;
+        __weak typeof(self.annotationView) theAnnotationView = self.annotationView;
         self.prepareBlock = ^{ theAnnotationView.alpha = .0f; };
         self.presentAnimationsBlock = ^{ theAnnotationView.alpha = 1.0f; };
         self.presentCompletionBlock = nil;

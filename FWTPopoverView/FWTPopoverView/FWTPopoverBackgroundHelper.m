@@ -26,7 +26,7 @@ enum {
 typedef NSUInteger AxisType;
 
 @interface FWTPopoverBackgroundHelper ()
-@property (nonatomic, readwrite, assign) FWTPopoverView *annotationView;
+@property (nonatomic, readwrite, weak) FWTPopoverView *annotationView;
 @property (nonatomic, readwrite, assign) CGRect pathFrame;
 @end
 
@@ -35,7 +35,6 @@ typedef NSUInteger AxisType;
 - (void)dealloc
 {
     self.annotationView = nil;
-    [super dealloc];
 }
 
 - (id)initWithAnnotationView:(FWTPopoverView *)annotationView

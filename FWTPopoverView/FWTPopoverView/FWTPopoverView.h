@@ -17,13 +17,13 @@ typedef void (^FWTPopoverViewDidDismissBlock)(FWTPopoverView *);
 
 @interface FWTPopoverView : UIView
 
-@property (nonatomic, readonly, retain) UIView *contentView;
+@property (nonatomic, readonly, strong) UIView *contentView;
 @property (nonatomic, assign) CGSize contentSize;
 @property (nonatomic, assign) BOOL adjustPositionInSuperviewEnabled;
 
-@property (nonatomic, retain) FWTPopoverBackgroundHelper *backgroundHelper;
-@property (nonatomic, retain) FWTPopoverArrow *arrow;
-@property (nonatomic, retain) FWTPopoverAnimationHelper *animationHelper;
+@property (nonatomic, strong) FWTPopoverBackgroundHelper *backgroundHelper;
+@property (nonatomic, strong) FWTPopoverArrow *arrow;
+@property (nonatomic, strong) FWTPopoverAnimationHelper *animationHelper;
 
 @property (nonatomic, copy) FWTPopoverViewDidPresentBlock didPresentBlock;
 @property (nonatomic, copy) FWTPopoverViewDidDismissBlock didDismissBlock;

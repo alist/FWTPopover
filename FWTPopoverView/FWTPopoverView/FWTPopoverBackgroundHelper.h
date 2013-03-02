@@ -15,7 +15,7 @@ typedef void (^FWTAnnotationViewDrawBezierPathBlock)(FWTPopoverBackgroundHelper 
 
 @interface FWTPopoverBackgroundHelper : CAShapeLayer
 
-@property (nonatomic, readonly, assign) FWTPopoverView *annotationView;
+@property (nonatomic, readonly, weak) FWTPopoverView *annotationView;
 @property (nonatomic, copy) FWTAnnotationViewDrawBezierPathBlock drawPathBlock;
 @property (nonatomic, readonly, assign) CGRect pathFrame;
 
